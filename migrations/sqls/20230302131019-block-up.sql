@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS "Block" (
+  "userId" INTEGER REFERENCES "User"(id) NOT NULL,
+  "blockedId" INTEGER REFERENCES "User"(id) NOT NULL
+)

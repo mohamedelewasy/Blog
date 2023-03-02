@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS "View"(
+  "userId" INTEGER REFERENCES "User"(id) NOT NULL,
+  "viewId" INTEGER REFERENCES "User"(id) NOT NULL
+);

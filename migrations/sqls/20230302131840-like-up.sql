@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS "Like" (
+  "userId" INTEGER REFERENCES "User"(id) NOT NULL,
+  "postId" INTEGER REFERENCES "Post"(id) NOT NULL
+)
