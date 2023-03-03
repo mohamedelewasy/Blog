@@ -1,3 +1,5 @@
+import Sequelize from 'sequelize';
+
 export interface User {
   id: number;
   firstName: string;

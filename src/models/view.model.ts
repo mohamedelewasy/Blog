@@ -15,7 +15,7 @@ ViewModel.init(
     userId: { type: DataTypes.INTEGER, references: { model: 'User', key: 'id' }, allowNull: false },
     viewId: { type: DataTypes.INTEGER, references: { model: 'User', key: 'id' }, allowNull: false },
   },
-  { sequelize, modelName: 'View', freezeTableName: true }
+  { sequelize, modelName: 'View', freezeTableName: true, timestamps: false }
 );
 
 ViewModel.sync();

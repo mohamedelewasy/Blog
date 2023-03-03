@@ -52,5 +52,16 @@ UserModel.init(
   { timestamps: true, sequelize, modelName: 'User', freezeTableName: true }
 );
 
+UserModel.belongsToMany(UserModel, {
+  through: 'Block',
+  as: 'userBlock',
+  foreignKey: 'userId',
+});
+UserModel.belongsToMany(UserModel, {
+  through: 'Block',
+  as: 'blockedUsers',
+  foreignKey: 'blockedId',
+});
+
 UserModel.sync();
 export default UserModel;
