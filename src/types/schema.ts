@@ -9,6 +9,7 @@ export interface User {
   isAdmin: boolean;
   role: string;
   plan: string;
+  token: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -22,6 +23,7 @@ export interface Post {
 }
 
 export interface Follow {
+  id: number;
   userId: number;
   followId: number;
 }
@@ -36,16 +38,23 @@ export interface Comment {
 }
 
 export interface Block {
+  id: number;
   userId: number;
   blockedId: number;
 }
 
 export interface Like {
+  id: number;
   userId: number;
   postId: number;
 }
 
 export interface View {
+  id: number;
   userId: number;
   viewId: number;
+}
+
+export interface JWT {
+  userId: number;
 }

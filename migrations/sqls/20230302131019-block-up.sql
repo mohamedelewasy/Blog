@@ -1,4 +1,5 @@
 CREATE TABLE IF NOT EXISTS "Block" (
+  "id" SERIAL PRIMARY KEY,
   "userId" INTEGER REFERENCES "User"(id) NOT NULL,
   "blockedId" INTEGER REFERENCES "User"(id) NOT NULL
 )
