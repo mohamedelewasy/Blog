@@ -2,6 +2,7 @@ import { DataTypes, Model } from 'sequelize';
 
 import sequelize from '../config/db';
 import { User } from '../types/schema';
+import PostModel from './post.model';
 
 class UserModel extends Model implements User {
   readonly id!: number;

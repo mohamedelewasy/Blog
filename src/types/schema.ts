@@ -19,6 +19,7 @@ export interface Post {
   id: number;
   desc: string;
   image: string;
+  userId: User;
   createdAt: Date;
   updatedAt: Date;
 }
