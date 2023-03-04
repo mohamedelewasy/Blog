@@ -7,6 +7,7 @@ const router = Router();
 router.route('/signin').post(U.signin);
 router.route('/signup').post(U.signup);
 router.route('/signout').post(protect, U.signout);
+router.route('/users').get(protect, U.show);
 router.route('/profile/reset-password').put(protect, U.resetPassword);
 router.route('/profile/block-list').get(protect, U.blockList);
 router.route('/profile/follow-list').get(protect, U.followingList);
@@ -17,5 +18,6 @@ router.route('/:userId/follow').post(protect, U.follow);
 router.route('/:userId/unfollow').post(protect, U.unfollow);
 router.route('/:userId/block').post(protect, U.block);
 router.route('/:userId/unblock').post(protect, U.unblock);
+router.route('/:userId/role').post(protect, U.updateUserRole);
 
 export default router;

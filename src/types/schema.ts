@@ -9,7 +9,6 @@ export interface User {
   password: string;
   isBlocked: boolean;
   isAdmin: boolean;
-  role: string;
   plan: string;
   token: string;
   createdAt: Date;

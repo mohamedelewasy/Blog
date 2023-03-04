@@ -7,7 +7,6 @@ CREATE TABLE IF NOT EXISTS "User" (
   "password" VARCHAR NOT NULL,
   "isBlocked" BOOLEAN NOT NULL DEFAULT 'false',
   "isAdmin" BOOLEAN NOT NULL DEFAULT 'false',
-  "role" VARCHAR(8) NOT NULL DEFAULT 'user',
   "plan" VARCHAR(8) NOT NULL DEFAULT 'free',
   "token" VARCHAR,
   "createdAt" DATE NOT NULL,

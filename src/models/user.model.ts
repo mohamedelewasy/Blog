@@ -45,7 +45,6 @@ UserModel.init(
     },
     isBlocked: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: 'false' },
     isAdmin: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: 'false' },
-    role: { type: DataTypes.ENUM('admin', 'user'), defaultValue: 'user' },
     plan: { type: DataTypes.ENUM('free', 'premium', 'pro'), defaultValue: 'free' },
     token: { type: DataTypes.STRING },
   },
