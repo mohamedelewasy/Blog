@@ -2,6 +2,7 @@ import { DataTypes, Model } from 'sequelize';
 
 import sequelize from '../config/db';
 import { Follow } from '../types/schema';
+import UserModel from './user.model';
 
 class FollowModel extends Model implements Follow {
   readonly id!: number;
@@ -21,6 +22,15 @@ FollowModel.init(
   },
   { sequelize, modelName: 'Follow', freezeTableName: true, timestamps: false }
 );
+
+FollowModel.belongsTo(UserModel, {
+  foreignKey: 'followId',
+  as: 'FollowingUsers',
+});
+FollowModel.belongsTo(UserModel, {
+  foreignKey: 'userId',
+  as: 'FollowersUsers',
+});
 
 FollowModel.sync();
 export default FollowModel;

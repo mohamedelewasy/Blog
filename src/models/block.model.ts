@@ -28,10 +28,6 @@ BlockModel.init(
 );
 
 BlockModel.belongsTo(UserModel, {
-  foreignKey: 'userId',
-  as: 'userBlock',
-});
-BlockModel.belongsTo(UserModel, {
   foreignKey: 'blockedId',
   as: 'blockedUsers',
 });

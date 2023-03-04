@@ -54,13 +54,18 @@ UserModel.init(
 
 UserModel.belongsToMany(UserModel, {
   through: 'Block',
-  as: 'userBlock',
-  foreignKey: 'userId',
-});
-UserModel.belongsToMany(UserModel, {
-  through: 'Block',
   as: 'blockedUsers',
   foreignKey: 'blockedId',
+});
+UserModel.belongsToMany(UserModel, {
+  through: 'Follow',
+  as: 'FollowingUsers',
+  foreignKey: 'followId',
+});
+UserModel.belongsToMany(UserModel, {
+  through: 'Follow',
+  as: 'FollowersUsers',
+  foreignKey: 'userId',
 });
 
 UserModel.sync();

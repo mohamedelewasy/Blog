@@ -1,27 +1,19 @@
 import { Router } from 'express';
 
-import {
-  block,
-  blockList,
-  follow,
-  resetPassword,
-  signin,
-  signout,
-  signup,
-  unblock,
-  unfollow,
-} from '../handlers/user';
+import * as U from '../handlers/user';
 import { protect } from '../middlewares/protect';
 
 const router = Router();
-router.route('/signin').post(signin);
-router.route('/signup').post(signup);
-router.route('/signout').post(protect, signout);
-router.route('/reset-password').put(protect, resetPassword);
-router.route('/profile/block-list').get(protect, blockList);
-router.route('/:userId/follow').post(protect, follow);
-router.route('/:userId/unfollow').post(protect, unfollow);
-router.route('/:userId/block').post(protect, block);
-router.route('/:userId/unblock').post(protect, unblock);
+router.route('/signin').post(U.signin);
+router.route('/signup').post(U.signup);
+router.route('/signout').post(protect, U.signout);
+router.route('/reset-password').put(protect, U.resetPassword);
+router.route('/profile/block-list').get(protect, U.blockList);
+router.route('/profile/follow-list').get(protect, U.followingList);
+router.route('/profile/follower-list').get(protect, U.followersList);
+router.route('/:userId/follow').post(protect, U.follow);
+router.route('/:userId/unfollow').post(protect, U.unfollow);
+router.route('/:userId/block').post(protect, U.block);
+router.route('/:userId/unblock').post(protect, U.unblock);
 
 export default router;

@@ -7,9 +7,10 @@ export { unfollow } from './unfollow';
 export { block } from './block';
 export { unblock } from './unblock';
 export { blockList } from './blockList';
+export { followingList } from './followingList';
+export { followersList } from './followerList';
 // TODO: forget user password
 // TODO: update user email
-// TODO: blocking list
 // TODO: find user by id
 // TODO: find user by email
 // TODO: find user by name
