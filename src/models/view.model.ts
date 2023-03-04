@@ -2,6 +2,7 @@ import { DataTypes, Model } from 'sequelize';
 
 import sequelize from '../config/db';
 import { View } from '../types/schema';
+import UserModel from './user.model';
 
 class ViewModel extends Model implements View {
   readonly id!: number;
@@ -17,6 +18,11 @@ ViewModel.init(
   },
   { sequelize, modelName: 'View', freezeTableName: true, timestamps: false }
 );
+
+ViewModel.belongsTo(UserModel, {
+  foreignKey: 'userId',
+  as: 'viewUsers',
+});
 
 ViewModel.sync();
 export default ViewModel;

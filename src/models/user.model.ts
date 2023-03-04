@@ -67,6 +67,11 @@ UserModel.belongsToMany(UserModel, {
   as: 'FollowersUsers',
   foreignKey: 'userId',
 });
+UserModel.belongsToMany(UserModel, {
+  through: 'View',
+  as: 'viewUsers',
+  foreignKey: 'userId',
+});
 
 UserModel.sync();
 export default UserModel;

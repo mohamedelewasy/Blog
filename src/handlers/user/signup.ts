@@ -8,6 +8,7 @@ import { generateToken } from '../../utils/token.util';
 
 // route:   POST /signup
 // access:  public
+// TODO: verify email
 export const signup = asyncHandler(async (req, res, next) => {
   const { firstName, lastName, profileImage, email, password } = req.body;
   if (!email || !password) return next(new ApiError('email and password are required', 400));
