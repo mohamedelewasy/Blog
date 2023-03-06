@@ -1,9 +1,8 @@
 import asyncHandler from 'express-async-handler';
 
 import ApiError from '../../errors/ApiError';
-// import LikeModel from '../../models/like.model';
-// import PostModel from '../../models/post.model';
-import { BlockModel, FollowModel, LikeModel, PostModel, UserModel } from '../../models';
+import LikeModel from '../../models/like.model';
+import PostModel from '../../models/post.model';
 
 // route:   post /post/:postId/dislike
 // access:  logged-user

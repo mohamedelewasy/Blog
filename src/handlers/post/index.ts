@@ -3,5 +3,6 @@ export { get } from './get';
 export { update } from './update';
 export { remove } from './delete';
 export { show } from './show';
-// TODO: like post
-// TODO: unlike post
+export { like } from './like';
+export { dislike } from './dislike';
+export { likersList } from './likersList';
