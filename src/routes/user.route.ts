@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import * as U from '../handlers/user';
 import { protect } from '../middlewares/protect';
+import { resizeImage, uploadImage } from '../middlewares/uploadImage';
 
 const router = Router();
 router.route('/signin').post(U.signin);
@@ -9,6 +10,7 @@ router.route('/signup').post(U.signup);
 router.route('/signout').post(protect, U.signout);
 router.route('/users').get(protect, U.show);
 router.route('/profile/reset-password').put(protect, U.resetPassword);
+router.route('/profile/reset-profile').put(protect, uploadImage, resizeImage, U.updateProfile);
 router.route('/profile/block-list').get(protect, U.blockList);
 router.route('/profile/follow-list').get(protect, U.followingList);
 router.route('/profile/follower-list').get(protect, U.followersList);

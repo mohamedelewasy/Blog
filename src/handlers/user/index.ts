@@ -2,6 +2,7 @@ export { signin } from './signin';
 export { signup } from './signup';
 export { signout } from './signout';
 export { resetPassword } from './resetPassword';
+export { updateProfile } from './updateProfile';
 export { follow } from './follow';
 export { unfollow } from './unfollow';
 export { block } from './block';
