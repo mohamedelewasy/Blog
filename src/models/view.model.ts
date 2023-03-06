@@ -19,10 +19,8 @@ ViewModel.init(
   { sequelize, modelName: 'View', freezeTableName: true, timestamps: false }
 );
 
-ViewModel.belongsTo(UserModel, {
-  foreignKey: 'userId',
-  as: 'viewUsers',
-});
+UserModel.belongsToMany(UserModel, { through: ViewModel, as: 'view', foreignKey: 'userId' });
+ViewModel.belongsTo(UserModel, { as: 'viewers', foreignKey: 'userId' });
 
 ViewModel.sync();
 export default ViewModel;

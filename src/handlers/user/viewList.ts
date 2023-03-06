@@ -12,7 +12,7 @@ export const viewersList = asyncHandler(async (req, res, next) => {
     include: [
       {
         model: UserModel,
-        as: 'viewUsers',
+        as: 'viewers',
         attributes: ['id', 'firstName', 'lastName', 'profileImage'],
       },
     ],
