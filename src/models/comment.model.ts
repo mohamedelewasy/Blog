@@ -2,6 +2,8 @@ import { DataTypes, Model } from 'sequelize';
 
 import sequelize from '../config/db';
 import { Comment } from '../types/schema';
+import PostModel from './post.model';
+import UserModel from './user.model';
 
 class CommentModel extends Model implements Comment {
   id!: number;
@@ -21,6 +23,11 @@ CommentModel.init(
   },
   { sequelize, timestamps: true, modelName: 'Comment', freezeTableName: true }
 );
+
+UserModel.belongsToMany(PostModel, { through: CommentModel, foreignKey: 'userId' });
+PostModel.belongsToMany(UserModel, { through: CommentModel, foreignKey: 'postId' });
+CommentModel.belongsTo(UserModel, { foreignKey: 'userId' });
+CommentModel.belongsTo(PostModel, { foreignKey: 'postId' });
 
 CommentModel.sync();
 export default CommentModel;
