@@ -1,8 +1,8 @@
-import { DataTypes, Model } from 'sequelize';
-
-import sequelize from '../config/db';
-import { User } from '../types/schema';
-import PostModel from './post.model';
+import sequelize from "../config/db";
+import { User } from "../types/schema";
+import FollowModel from "./follow.model";
+import PostModel from "./post.model";
+import { DataTypes, Model } from "sequelize";
 
 class UserModel extends Model implements User {
   readonly id!: number;
@@ -34,44 +34,39 @@ UserModel.init(
       allowNull: true,
     },
     profileImage: { type: DataTypes.STRING },
-    email: { type: DataTypes.STRING, unique: true, allowNull: false, validate: { isEmail: true } },
+    email: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false,
+      validate: { isEmail: true },
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         function(val: string) {
-          if (val.length < 6) throw new Error('password must be 6 or greater');
+          if (val.length < 6) throw new Error("password must be 6 or greater");
         },
       },
     },
-    isBlocked: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: 'false' },
-    isAdmin: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: 'false' },
-    plan: { type: DataTypes.ENUM('free', 'premium', 'pro'), defaultValue: 'free' },
+    isBlocked: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: "false",
+    },
+    isAdmin: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: "false",
+    },
+    plan: {
+      type: DataTypes.ENUM("free", "premium", "pro"),
+      defaultValue: "free",
+    },
     token: { type: DataTypes.STRING },
   },
-  { timestamps: true, sequelize, modelName: 'User', freezeTableName: true }
+  { timestamps: true, sequelize, modelName: "User", freezeTableName: true }
 );
-
-UserModel.belongsToMany(UserModel, {
-  through: 'Block',
-  as: 'blockedUsers',
-  foreignKey: 'blockedId',
-});
-UserModel.belongsToMany(UserModel, {
-  through: 'Follow',
-  as: 'FollowingUsers',
-  foreignKey: 'followId',
-});
-UserModel.belongsToMany(UserModel, {
-  through: 'Follow',
-  as: 'FollowersUsers',
-  foreignKey: 'userId',
-});
-UserModel.belongsToMany(UserModel, {
-  through: 'View',
-  as: 'viewUsers',
-  foreignKey: 'userId',
-});
 
 UserModel.sync();
 export default UserModel;

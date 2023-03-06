@@ -23,7 +23,7 @@ export const blockList = asyncHandler(async (req, res, next) => {
     include: [
       {
         model: UserModel,
-        as: 'blockedUsers',
+        as: 'blocking',
         attributes: ['id', 'firstName', 'lastName', 'profileImage'],
       },
     ],

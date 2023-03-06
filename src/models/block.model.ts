@@ -27,10 +27,11 @@ BlockModel.init(
   { sequelize, modelName: 'Block', freezeTableName: true, timestamps: false }
 );
 
-BlockModel.belongsTo(UserModel, {
+UserModel.belongsToMany(UserModel, {
+  through: BlockModel,
+  as: 'blocked',
   foreignKey: 'blockedId',
-  as: 'blockedUsers',
 });
-
+BlockModel.belongsTo(UserModel, { as: 'blocking', foreignKey: 'blockedId' });
 BlockModel.sync();
 export default BlockModel;

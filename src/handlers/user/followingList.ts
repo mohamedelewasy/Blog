@@ -1,7 +1,6 @@
-import asyncHandler from 'express-async-handler';
-
-import FollowModel from '../../models/follow.model';
-import UserModel from '../../models/user.model';
+import FollowModel from "../../models/follow.model";
+import UserModel from "../../models/user.model";
+import asyncHandler from "express-async-handler";
 
 // route:   GET /profile/follow-list
 // access:  logged-user
@@ -12,8 +11,8 @@ export const followingList = asyncHandler(async (req, res, next) => {
     include: [
       {
         model: UserModel,
-        as: 'FollowingUsers',
-        attributes: ['id', 'firstName', 'lastName', 'profileImage'],
+        as: "Following",
+        attributes: ["id", "firstName", "lastName", "profileImage"],
       },
     ],
   });
