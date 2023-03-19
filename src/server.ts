@@ -12,6 +12,13 @@ const env = process.env.ENV;
 const port = process.env.port;
 
 app.use(express.json());
+// logger
+if (env === 'development')
+  app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url} - ${res.statusCode} auth=${res.locals.userId}`);
+    next();
+  });
+
 // test app health
 app.use('/healthz', (req, res) => {
   res.status(200).send('ok');

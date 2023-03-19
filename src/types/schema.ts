@@ -1,5 +1,3 @@
-import Sequelize from 'sequelize';
-
 export interface User {
   id: number;
   firstName: string;
@@ -60,3 +58,4 @@ export interface View {
 export interface JWT {
   userId: number;
 }
+export const IncludedUser = ['id', 'firstName', 'lastName', 'profileImage'];

@@ -10,7 +10,9 @@ router.route('/signup').post(U.signup);
 router.route('/signout').post(protect, U.signout);
 router.route('/users').get(protect, U.show);
 router.route('/profile/reset-password').put(protect, U.resetPassword);
-router.route('/profile/reset-profile').put(protect, uploadImage, resizeImage, U.updateProfile);
+router
+  .route('/profile/update-profile-image')
+  .put(protect, uploadImage, resizeImage, U.updateProfileImg);
 router.route('/profile/block-list').get(protect, U.blockList);
 router.route('/profile/follow-list').get(protect, U.followingList);
 router.route('/profile/follower-list').get(protect, U.followersList);
@@ -20,6 +22,6 @@ router.route('/:userId/follow').post(protect, U.follow);
 router.route('/:userId/unfollow').post(protect, U.unfollow);
 router.route('/:userId/block').post(protect, U.block);
 router.route('/:userId/unblock').post(protect, U.unblock);
-router.route('/:userId/role').post(protect, U.updateUserRole);
+router.route('/:userId/role').put(protect, U.updateUserRole);
 
 export default router;

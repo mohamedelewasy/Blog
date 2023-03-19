@@ -1,4 +1,4 @@
-import { compareSync, hash, hashSync } from 'bcrypt';
+import { compareSync, hashSync } from 'bcrypt';
 import dotenv from 'dotenv';
 
 dotenv.config();

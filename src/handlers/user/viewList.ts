@@ -1,21 +1,26 @@
+import { RequestHandler } from 'express';
 import asyncHandler from 'express-async-handler';
 
 import UserModel from '../../models/user.model';
 import ViewModel from '../../models/view.model';
+import { IncludedUser } from '../../types/schema';
+import { viewersListParam, viewersListReq } from '../../types/userEndpoints';
 
 // route:   GET /profile/viewers
 // access:  logged-user
-export const viewersList = asyncHandler(async (req, res, next) => {
-  const list = await ViewModel.findAll({
-    where: { viewId: res.locals.userId },
-    attributes: [],
-    include: [
-      {
-        model: UserModel,
-        as: 'viewers',
-        attributes: ['id', 'firstName', 'lastName', 'profileImage'],
-      },
-    ],
-  });
-  res.status(200).json({ count: list.length, list: list });
-});
+export const viewersList: RequestHandler<viewersListParam, unknown, viewersListReq> = asyncHandler(
+  async (req, res) => {
+    const list = await ViewModel.findAll({
+      where: { viewId: res.locals.userId },
+      attributes: [],
+      include: [
+        {
+          model: UserModel,
+          as: 'viewers',
+          attributes: IncludedUser,
+        },
+      ],
+    });
+    res.status(200).json({ count: list.length, list: list });
+  }
+);

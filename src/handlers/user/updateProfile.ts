@@ -1,11 +1,21 @@
+import { RequestHandler } from 'express';
 import asyncHandler from 'express-async-handler';
 
 import ApiError from '../../errors/ApiError';
 import UserModel from '../../models/user.model';
+import {
+  updateProfileImgParam,
+  updateProfileImgReq,
+  updateProfileImgRes,
+} from '../../types/userEndpoints';
 
 // route:   PUT /reset-profile
 // access:  logged-user
-export const updateProfile = asyncHandler(async (req, res, next) => {
+export const updateProfileImg: RequestHandler<
+  updateProfileImgParam,
+  updateProfileImgRes,
+  updateProfileImgReq
+> = asyncHandler(async (req, res, next) => {
   if (!req.file) return next(new ApiError('profileImage is required', 400));
   await UserModel.update(
     { profileImage: req.body.profileImage },

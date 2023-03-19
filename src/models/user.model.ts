@@ -1,8 +1,7 @@
-import sequelize from "../config/db";
-import { User } from "../types/schema";
-import FollowModel from "./follow.model";
-import PostModel from "./post.model";
-import { DataTypes, Model } from "sequelize";
+import { DataTypes, Model } from 'sequelize';
+
+import sequelize from '../config/db';
+import { User } from '../types/schema';
 
 class UserModel extends Model implements User {
   readonly id!: number;
@@ -45,27 +44,27 @@ UserModel.init(
       allowNull: false,
       validate: {
         function(val: string) {
-          if (val.length < 6) throw new Error("password must be 6 or greater");
+          if (val.length < 6) throw new Error('password must be 6 or greater');
         },
       },
     },
     isBlocked: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: "false",
+      defaultValue: 'false',
     },
     isAdmin: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: "false",
+      defaultValue: 'false',
     },
     plan: {
-      type: DataTypes.ENUM("free", "premium", "pro"),
-      defaultValue: "free",
+      type: DataTypes.ENUM('free', 'premium', 'pro'),
+      defaultValue: 'free',
     },
     token: { type: DataTypes.STRING },
   },
-  { timestamps: true, sequelize, modelName: "User", freezeTableName: true }
+  { timestamps: true, sequelize, modelName: 'User', freezeTableName: true }
 );
 
 UserModel.sync();
