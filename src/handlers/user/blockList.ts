@@ -31,6 +31,6 @@ export const blockList: RequestHandler<blockListParam, unknown, blockListReq> = 
         },
       ],
     });
-    res.status(200).json({ count: list.length, list: list });
+    res.status(200).json({ count: list.length, list });
   }
 );

@@ -14,6 +14,7 @@ export const signup: RequestHandler<signupParam, signupRes, signupReq> = asyncHa
   async (req, res, next) => {
     const { firstName, lastName, email, password } = req.body;
     if (!email || !password) return next(new ApiError('email and password are required', 400));
+    if (password.length < 6) return next(new ApiError('password must be 6 or greater', 400));
     const hashedPassword = hashPassword(password);
     const user = await UserModel.create({
       firstName,

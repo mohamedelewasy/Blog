@@ -12,7 +12,7 @@ import { blockParam, blockReq, blockRes } from '../../types/userEndpoints';
 export const block: RequestHandler<blockParam, blockRes, blockReq> = asyncHandler(
   async (req, res, next) => {
     // user cannot block himself
-    if (res.locals.userId === req.params.userId)
+    if (res.locals.userId == req.params.userId)
       return next(new ApiError('cannot block your self', 400));
     const targetUser = await UserModel.findByPk(req.params.userId, {
       attributes: ['id'],

@@ -13,7 +13,7 @@ export type blockReq = never;
 export type blockListParam = never;
 export type blockListRes = {
   count: number;
-  list: IncludedUser[];
+  list: { blocking: IncludedUser }[];
 };
 export type blockListReq = never;
 
@@ -21,12 +21,19 @@ export type followParam = { userId: string };
 export type followRes = never;
 export type followReq = never;
 
-export type followListParam = never;
-export type followListRes = {
+export type followingListParam = never;
+export type followingListRes = {
   count: number;
-  list: IncludedUser[];
+  list: { following: IncludedUser[] };
 };
-export type followListReq = never;
+export type followingListReq = never;
+
+export type followersListParam = never;
+export type followersListRes = {
+  count: number;
+  list: { follower: IncludedUser[] };
+};
+export type followersListReq = never;
 
 export type getParam = { userId: string };
 export type getRes = { user: IncludedUser };
@@ -38,7 +45,7 @@ export type showReq = never;
 
 export type resetPasswordParam = never;
 export type resetPasswordRes = { token: string };
-export type resetPasswordReq = never;
+export type resetPasswordReq = { oldPassword: string; newPassword: string };
 
 export type signupParam = never;
 export type signupRes = { token: string };
@@ -53,5 +60,5 @@ export type updateUserRoleRes = never;
 export type updateUserRoleReq = { isAdmin: boolean };
 
 export type viewersListParam = never;
-export type viewersListRes = { count: number; list: IncludedUser[] };
+export type viewersListRes = { count: number; list: { viewers: IncludedUser }[] };
 export type viewersListReq = never;

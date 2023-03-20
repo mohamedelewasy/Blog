@@ -39,11 +39,11 @@ UserModel.belongsToMany(UserModel, {
 });
 FollowModel.belongsTo(UserModel, {
   foreignKey: 'followId',
-  as: 'Following',
+  as: 'following',
 });
 FollowModel.belongsTo(UserModel, {
   foreignKey: 'userId',
-  as: 'Follower',
+  as: 'follower',
 });
 
 FollowModel.sync();

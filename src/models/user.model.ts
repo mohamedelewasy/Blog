@@ -37,7 +37,7 @@ UserModel.init(
       type: DataTypes.STRING,
       unique: true,
       allowNull: false,
-      validate: { isEmail: true },
+      validate: { isEmail: { msg: 'invalid email format' } },
     },
     password: {
       type: DataTypes.STRING,

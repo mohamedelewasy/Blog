@@ -11,7 +11,7 @@ import { followParam, followReq, followRes } from '../../types/userEndpoints';
 export const unfollow: RequestHandler<followParam, followRes, followReq> = asyncHandler(
   async (req, res, next) => {
     // user cannot unfollow himself
-    if (res.locals.userId === req.params.userId)
+    if (res.locals.userId == req.params.userId)
       return next(new ApiError('cannot unfollow your self', 400));
     const targetUser = await UserModel.findByPk(req.params.userId, { attributes: ['id'] });
     if (!targetUser) return next(new ApiError('user not found', 400));

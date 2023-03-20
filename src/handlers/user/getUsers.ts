@@ -15,7 +15,10 @@ export const show: RequestHandler<showParam, showRes, showReq> = asyncHandler(as
   const offset = (page - 1) * limit;
   const list = await UserModel.findAll({
     where: {
-      [Op.or]: [{ firstName: { [Op.like]: req.query.name } }, { email: req.query.email }],
+      [Op.or]: [
+        { firstName: { [Op.like]: `${req.query.name}%` || '' } },
+        { email: req.query.email || '' },
+      ],
     },
     attributes: IncludedUser,
     limit,
