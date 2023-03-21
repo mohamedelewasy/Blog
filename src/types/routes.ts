@@ -17,6 +17,22 @@ enum user {
   updateUserRole = 'updateUserRole',
 }
 
+enum post {
+  create = 'create',
+  show = 'show',
+  remove = 'remove',
+  update = 'update',
+  get = 'get',
+  likersList = 'likersList',
+  like = 'like',
+  dislike = 'dislike',
+  createComment = 'createComment',
+  showComment = 'showComment',
+  getComment = 'getComment',
+  updateComment = 'updateComment',
+  removeComment = 'removeComment',
+}
+
 export const userRoutes: { [key in user]: { url: string; method: string } } = {
   [user.signin]: { url: '/api/v1/auth/signin', method: 'post' },
   [user.signup]: { url: '/api/v1/auth/signup', method: 'post' },
@@ -34,4 +50,20 @@ export const userRoutes: { [key in user]: { url: string; method: string } } = {
   [user.block]: { url: '/api/v1/auth/:userId/block', method: 'post' },
   [user.unblock]: { url: '/api/v1/auth/:userId/unblock', method: 'post' },
   [user.updateUserRole]: { url: '/api/v1/auth/:userId/role', method: 'put' },
+};
+
+export const postRoutes: { [key in post]: { url: string; method: string } } = {
+  [post.create]: { url: '/api/v1/post/', method: 'post' },
+  [post.show]: { url: '/api/v1/post/', method: 'get' },
+  [post.remove]: { url: '/api/v1/post/:postId', method: 'delete' },
+  [post.update]: { url: '/api/v1/post/:postId', method: 'patch' },
+  [post.get]: { url: '/api/v1/post/:postId', method: 'get' },
+  [post.likersList]: { url: '/api/v1/post/:postId/likers', method: 'get' },
+  [post.like]: { url: '/api/v1/post/:postId/like', method: 'post' },
+  [post.dislike]: { url: '/api/v1/post/:postId/dislike', method: 'post' },
+  [post.createComment]: { url: '/api/v1/post/:postId/comment', method: 'post' },
+  [post.showComment]: { url: '/api/v1/post/:postId/comment', method: 'get' },
+  [post.getComment]: { url: '/api/v1/post/:postId/comment/:commentId', method: 'get' },
+  [post.updateComment]: { url: '/api/v1/post/:postId/comment/:commentId', method: 'update' },
+  [post.removeComment]: { url: '/api/v1/post/:postId/comment/:commentId', method: 'remove' },
 };

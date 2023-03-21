@@ -16,7 +16,11 @@ class PostModel extends Model implements Post {
 PostModel.init(
   {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    desc: { type: DataTypes.STRING, allowNull: false },
+    desc: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: { notNull: { msg: 'invalid description' } },
+    },
     image: { type: DataTypes.STRING },
     userId: {
       type: DataTypes.INTEGER,

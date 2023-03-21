@@ -18,5 +18,5 @@ export const show: RequestHandler<showParam, unknown, showReq> = asyncHandler(as
     order: [['updatedAt', 'DESC']],
     include: [{ model: UserModel, attributes: IncludedUser }],
   });
-  res.status(200).json({ list });
+  res.status(200).json({ count: list.length, list });
 });

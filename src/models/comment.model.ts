@@ -17,7 +17,11 @@ class CommentModel extends Model implements Comment {
 CommentModel.init(
   {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    comment: { type: DataTypes.STRING, allowNull: false },
+    comment: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: { notNull: { msg: 'invalid comment' } },
+    },
     postId: { type: DataTypes.INTEGER, references: { model: 'Post', key: 'id' } },
     userId: { type: DataTypes.INTEGER, references: { model: 'User', key: 'id' } },
   },
