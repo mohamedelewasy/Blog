@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import dotenv from 'dotenv';
 import express from 'express';
+import path from 'path';
 
 import sequelize from './config/db';
 import { errorHandler } from './middlewares/errorHandler';
@@ -14,7 +15,7 @@ app.use(express.json());
 // logger
 if (env === 'development')
   app.use((req, res, next) => {
-    console.log(`${req.method} ${req.url} - ${res.statusCode} auth=${res.locals.userId}`);
+    console.log(`${req.method} ${req.url} - ${res.statusCode}`);
     next();
   });
 
@@ -38,3 +39,4 @@ sequelize
   });
 
 export default app;
+export const __BASEdIRECTORY = __dirname;

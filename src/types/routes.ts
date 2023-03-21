@@ -39,7 +39,7 @@ export const userRoutes: { [key in user]: { url: string; method: string } } = {
   [user.signout]: { url: '/api/v1/auth/signout', method: 'post' },
   [user.show]: { url: '/api/v1/auth/users', method: 'get' },
   [user.resetPassword]: { url: '/api/v1/auth/profile/reset-password', method: 'put' },
-  [user.updateProfileImg]: { url: '/api/v1/auth/profile/update-profile-image', method: 'put' },
+  [user.updateProfileImg]: { url: '/api/v1/auth/profile/profile-image', method: 'put' },
   [user.blockList]: { url: '/api/v1/auth/profile/block-list', method: 'get' },
   [user.followingList]: { url: '/api/v1/auth/profile/follow-list', method: 'get' },
   [user.followersList]: { url: '/api/v1/auth/profile/follower-list', method: 'get' },

@@ -3,6 +3,7 @@ import multer, { memoryStorage } from 'multer';
 import path from 'path';
 import sharp from 'sharp';
 
+import { __BASEdIRECTORY } from '../app';
 import ApiError from '../errors/ApiError';
 
 const upload = multer({
@@ -21,7 +22,7 @@ export const resizeImage = asyncHandler(async (req, res, next) => {
     await sharp(req.file.buffer)
       .resize(800, 800)
       .toFormat('jpeg')
-      .toFile(path.join(__dirname, `../uploads/profiles/${imageId}`));
+      .toFile(path.join(__BASEdIRECTORY, `/uploads/profiles/${imageId}`));
     req.body.profileImage = imageId;
   }
   next();

@@ -9,7 +9,7 @@ import {
   updateProfileImgRes,
 } from '../../types/userEndpoints';
 
-// route:   PUT /reset-profile
+// route:   PUT /profile-image
 // access:  logged-user
 export const updateProfileImg: RequestHandler<
   updateProfileImgParam,
