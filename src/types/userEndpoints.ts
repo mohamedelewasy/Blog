@@ -55,6 +55,10 @@ export type updateProfileImgParam = never;
 export type updateProfileImgRes = never;
 export type updateProfileImgReq = { profileImage: string };
 
+export type getProfileImgParam = never;
+export type getProfileImgRes = { image: string };
+export type getProfileImgReq = never;
+
 export type updateUserRoleParam = { userId: string };
 export type updateUserRoleRes = never;
 export type updateUserRoleReq = { isAdmin: boolean };

@@ -12,7 +12,12 @@ router.route('/users').get(protect, U.show);
 router.route('/profile/reset-password').put(protect, U.resetPassword);
 router
   .route('/profile/profile-image')
-  .put(protect, uploadImage, resizeImage, U.updateProfileImg)
+  .put(
+    protect,
+    uploadImage('profileImage'),
+    resizeImage('profileImage', 'profiles'),
+    U.updateProfileImg
+  )
   .get(protect, U.getProfileImg);
 router.route('/profile/block-list').get(protect, U.blockList);
 router.route('/profile/follow-list').get(protect, U.followingList);

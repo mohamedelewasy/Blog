@@ -3,7 +3,7 @@ import { Post, User } from './schema';
 type IncludedUser = Pick<User, 'id' | 'firstName' | 'lastName' | 'profileImage'>;
 export type createParam = never;
 export type createRes = { post: Post };
-export type createReq = { desc: string; image: string | undefined };
+export type createReq = { desc: string };
 
 export type removeParam = { postId: string };
 export type removeRes = never;
@@ -28,3 +28,11 @@ export type showReq = never;
 export type updateParam = { postId: string };
 export type updateRes = never;
 export type updateReq = { desc: string | undefined; image: string | undefined };
+
+export type updatePostImgParam = { postId: string };
+export type updatePostImgRes = never;
+export type updatePostImgReq = { image: string };
+
+export type getPostImgParam = { postId: string };
+export type getPostImgRes = { image: string };
+export type getPostImgReq = never;

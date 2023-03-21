@@ -10,7 +10,6 @@ export const create: RequestHandler<createParam, createRes, createReq> = asyncHa
   async (req, res) => {
     const post = await PostModel.create({
       desc: req.body.desc,
-      image: req.body.image || null,
       userId: res.locals.userId,
     });
     res.status(200).json({ post });

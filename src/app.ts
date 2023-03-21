@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import dotenv from 'dotenv';
 import express from 'express';
-import path from 'path';
 
 import sequelize from './config/db';
 import { errorHandler } from './middlewares/errorHandler';

@@ -6,3 +6,5 @@ export { show } from './show';
 export { like } from './like';
 export { dislike } from './dislike';
 export { likersList } from './likersList';
+export { updatePostImg } from './updatePostImage';
+export { getPostImg } from './getPostImage';
