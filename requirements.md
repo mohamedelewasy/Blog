@@ -54,6 +54,8 @@ you can find types of endpoints response, request and params in [post-endpoint-t
 
 ## Data Shapes
 
+![ERD](./ERD.png)
+
 **User**
 
 ```sql
